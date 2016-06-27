@@ -50,6 +50,7 @@ int main(int argc, char** argv) {
 
   out_file += (out_file == "") ? "packed.json" : "";
   if( input_files.size() == 0) usage(argv[0]);
+  else sort(input_files.begin(), input_files.end());
 
   std::cout << "Packing : ";
   for (auto i : input_files) std::cout << i << "  ";
@@ -72,7 +73,8 @@ int main(int argc, char** argv) {
         std::vector<std::string> tokens;
         boost::algorithm::split(tokens, it->name(), boost::is_any_of("_"), boost::algorithm::token_compress_off);
         std::stringstream obj_name;
-        obj_name << tokens[0] << "_" << std::setw(5) << std::setfill('0') << counter;
+        for (size_t i = 0; i < tokens.size() - 1; i++) obj_name << tokens[i] << "_";
+        obj_name << std::setw(7) << std::setfill('0') << counter;
         out_json[obj_name.str()] = it->value();
       }
     }

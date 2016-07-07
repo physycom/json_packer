@@ -69,13 +69,15 @@ int main(int argc, char** argv) {
 
     if (in_json.is_object()) {
       for (auto it = in_json.begin_members(); it != in_json.end_members(); it++) {
-        counter++;
         std::vector<std::string> tokens;
         boost::algorithm::split(tokens, it->name(), boost::is_any_of("_"), boost::algorithm::token_compress_off);
+        
         std::stringstream obj_name;
         for (size_t i = 0; i < tokens.size() - 1; i++) obj_name << tokens[i] << "_";
-        obj_name << std::setw(7) << std::setfill('0') << counter;
+        obj_name << std::setw(5) << std::setfill('0') << counter;
         out_json[obj_name.str()] = it->value();
+
+        counter++;
       }
     }
     else {

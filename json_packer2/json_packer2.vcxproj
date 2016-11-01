@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{25294587-C9D8-441C-9A9F-EE9F8DD7693B}</ProjectGuid>
-    <RootNamespace>json_packer</RootNamespace>
+    <ProjectGuid>{09EC81DB-88A5-4414-B5FC-5AF6DF5C706F}</ProjectGuid>
+    <RootNamespace>json_packer2</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -125,28 +125,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\json_packer.cpp" />
+    <ClCompile Include="..\src\json_packer2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\jsoncons\json.hpp" />
-    <ClInclude Include="..\src\jsoncons\json1.hpp" />
-    <ClInclude Include="..\src\jsoncons\json2.hpp" />
-    <ClInclude Include="..\src\jsoncons\jsoncons.hpp" />
-    <ClInclude Include="..\src\jsoncons\jsoncons_config.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_deserializer.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_exception.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_filter.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_input_handler.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_output_handler.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_parser.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_parser_category.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_reader.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_serializer.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_structures.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_text_error_category.hpp" />
-    <ClInclude Include="..\src\jsoncons\json_type_traits.hpp" />
-    <ClInclude Include="..\src\jsoncons\output_format.hpp" />
-    <ClInclude Include="..\src\jsoncons\parse_error_handler.hpp" />
+    <ClInclude Include="..\src\nlohmann_json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

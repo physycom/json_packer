@@ -15,16 +15,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***************************************************************************/
 
-#define _CRT_SECURE_NO_WARNINGS
 #define _SCL_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include <fstream>
 
 #include <boost/algorithm/string.hpp>
 
-#include "jsoncons/json.hpp"
+#include "nlohmann_json.hpp"
+using json = nlohmann::json;
 
-#define MAJOR 1
+using namespace std;
+
+#define MAJOR 0
 #define MINOR 0
 
 void usage(char * progname) {
@@ -35,7 +38,7 @@ void usage(char * progname) {
 }
 
 int main(int argc, char** argv) {
-  std::cout << "Json Packer v" << MAJOR << "." << MINOR << std::endl << std::endl;
+  std::cout << "Json Packer II v" << MAJOR << "." << MINOR << std::endl << std::endl;
 
   std::vector<std::string> input_files;
   std::string out_file = "";
@@ -50,47 +53,49 @@ int main(int argc, char** argv) {
   }
 
   out_file += (out_file == "") ? "packed.json" : "";
-  if( input_files.size() == 0) usage(argv[0]);
+  if (input_files.size() == 0) usage(argv[0]);
   else sort(input_files.begin(), input_files.end());
 
   std::cout << "Packing : ";
   for (auto i : input_files) std::cout << i << "  ";
   std::cout << std::endl << "Output  : " << out_file << std::endl;
 
-  jsoncons::json out_json;
+  json out_json;
   int counter = 0;
   for (auto file : input_files) {
-    jsoncons::json in_json;
+    std::ifstream ifs(file);
+    json in_json;
     try {
-      in_json = jsoncons::json::parse_file(file);
+      in_json = json(ifs);
     }
-    catch (std::exception &e) {
-      std::cout << "EXCEPTION: " << e.what() << std::endl;
+    catch (std::exception& e) {
+      std::cerr << "ERROR in parsing file " << file << " : " << e.what() << endl;
       continue;
     }
+    ifs.close();
 
     if (in_json.is_object()) {
-      for (auto it = in_json.begin_members(); it != in_json.end_members(); it++) {
+      for (auto it = in_json.begin(); it != in_json.end(); ++it) {
         std::vector<std::string> tokens;
-        boost::algorithm::split(tokens, it->name(), boost::is_any_of("_"), boost::algorithm::token_compress_off);
-        
+        boost::algorithm::split(tokens, it.key(), boost::is_any_of("_"), boost::algorithm::token_compress_off);
+
         std::stringstream obj_name;
         for (size_t i = 0; i < tokens.size() - 1; i++) obj_name << tokens[i] << "_";
         obj_name << std::setw(5) << std::setfill('0') << counter;
-        out_json[obj_name.str()] = it->value();
+        out_json[it.key()] = it.value();
 
         counter++;
       }
     }
     else {
-      std::cout << "ERROR: JSON array not supported" << std::endl;
-      exit(-11);
+      std::cerr << "ERROR: JSON array not supported in file " << file << std::endl;
+      exit(11);
     }
   }
 
   std::ofstream output(out_file);
-  output << jsoncons::pretty_print(out_json);
+  output << out_json.dump(2) << endl;
   output.close();
-  
+
   return 0;
 }

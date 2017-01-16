@@ -15,14 +15,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***************************************************************************/
 
-#define _SCL_SECURE_NO_WARNINGS
-
 #include <iostream>
 #include <fstream>
 
 #include <boost/algorithm/string.hpp>
 
-#include "nlohmann_json.hpp"
+#include "json.hpp"
+
 using json = nlohmann::json;
 
 using namespace std;
@@ -77,7 +76,8 @@ int main(int argc, char** argv) {
     if (in_json.is_object()) {
       for (auto it = in_json.begin(); it != in_json.end(); ++it) {
         std::vector<std::string> tokens;
-        boost::algorithm::split(tokens, it.key(), boost::is_any_of("_"), boost::algorithm::token_compress_off);
+        std::string temp = it.key();
+        boost::algorithm::split(tokens, temp, boost::is_any_of("_"), boost::algorithm::token_compress_off);
 
         std::stringstream obj_name;
         for (size_t i = 0; i < tokens.size() - 1; i++) obj_name << tokens[i] << "_";

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\json_packer2.cpp">
+    <ClCompile Include="..\src\packer_nlohmannjson.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "json_packer", "json_packer\json_packer.vcxproj", "{25294587-C9D8-441C-9A9F-EE9F8DD7693B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "packer_jsoncons.vcxproj", "packer_jsoncons.vcxproj\packer_jsoncons.vcxproj", "{25294587-C9D8-441C-9A9F-EE9F8DD7693B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "json_packer2", "json_packer2\json_packer2.vcxproj", "{09EC81DB-88A5-4414-B5FC-5AF6DF5C706F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "packer_nlohmannjson.vcxproj", "packer_nlohmannjson.vcxproj\packer_nlohmannjson.vcxproj", "{09EC81DB-88A5-4414-B5FC-5AF6DF5C706F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -31,8 +31,8 @@ Contains [jsoncons](https://github.com/danielaparker/jsoncons) and [nlohmannjson
 
 ### Usage
 ```
-packer_nlohmannjson.exe -o packed_name.json file1.json file2.json ... (to use the nlohmann's json library)
-packer_jsoncons.exe -o packed_name.json file1.json file2.json ... (to use the danielaparker's json library)
+packer_nlohmannjson.exe -o packed_name.json file1.json file2.json ...
+packer_jsoncons.exe -o packed_name.json file1.json file2.json ...
 ```
 In the former case you will use nlohmann's json library to parse input file and prepare output file, while in the latter jsoncons will be used.
 

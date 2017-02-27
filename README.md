@@ -22,7 +22,7 @@ author: "Fabbri, Sinigardi"
 
 
 ### Purpose
-This tool has been written in order to merge multiple .json files, in particular giving our priority to our GNSS data format, keeping an ordered sequence of objects in the file.
+This tool has been written in order to merge multiple .json files, in particular giving priority to our GNSS data format, keeping an ordered sequence of objects in the file.
 
 ### Installation
 **make** and a **C++11** compatible compiler are required. Clone the repo and type ``make``, it should be enough in most cases to build the two executables!   
@@ -34,7 +34,8 @@ Contains [jsoncons](https://github.com/danielaparker/jsoncons) and [nlohmannjson
 packer_nlohmannjson.exe -o packed_name.json file1.json file2.json ... (to use the nlohmann's json library)
 packer_jsoncons.exe -o packed_name.json file1.json file2.json ... (to use the danielaparker's json library)
 ```
+In the former case you will use nlohmann's json library to parse input file and prepare output file, while in the latter jsoncons will be used.
 
-More details about file formats can be found in our technical description (document still not published)
+More details about file formats is available [here](https://github.com/physycom/file_format_specifications/blob/master/formati_file.md).
 
 

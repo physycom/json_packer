@@ -25,8 +25,11 @@ author: "Fabbri, Sinigardi"
 This tool has been written in order to merge multiple .json files, in particular giving priority to our GNSS data format, keeping an ordered sequence of objects in the file.
 
 ### Installation
-**make** and a **C++11** compatible compiler are required. Clone the repo and type ``make``, it should be enough in most cases to build the two executables!   
-There's also a **VS2015** solution avalaible.   
+**CMake**, **boost** and a **C++11** compatible compiler are required. To build the executable, clone the repo and then type  
+```
+mkdir build ; cd build ; cmake .. ; cmake --build . --target install
+```
+With CMake you can also deploy projects for the most common IDEs.  
 Contains [jsoncons](https://github.com/danielaparker/jsoncons) and [nlohmannjson](https://github.com/nlohmann/json) as git submodules.
 
 ### Usage
